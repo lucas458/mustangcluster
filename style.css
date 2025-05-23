@@ -1,0 +1,922 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #181818;
+    color: #fff;
+    user-select: none;
+}
+
+
+
+#main_screen{
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+
+}
+
+
+#cluster{
+    width: 724px;
+    height: 230px;
+    background-color: #000;
+
+    display: flex;
+    justify-content: space-between;
+
+    flex-shrink: 0; 
+
+    /* transform: translate(30%, 30%); */
+
+    border-radius: 150px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+
+
+
+#tachometer,
+#speedometer{
+    width: 230px;
+    height: 230px;
+    background-color: #000;
+    border-radius: 50%;
+    border: 2px solid #a5a0ad;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.markList,
+.meterNeedle,
+.meterDisc{
+    position: absolute;
+}
+
+
+
+
+
+
+.meterNeedle{
+    width: 6px;
+    height: 56px;
+    /* background-color: #fff; */
+    overflow: hidden;
+    transform-origin: center 113px;
+    transform: translateY(-85px) rotate(-135deg) translateX(0px);
+    /* transform: translateY(-85px) rotate(135deg) translateX(0px); */
+    z-index: 1;
+}
+
+
+.meterNeedle::after{
+    content: '';
+    width: 6px;
+    height: calc(56px * 2);
+    transform: translateY(-4px);
+    /* transform: translate(-0.2px, -4px); */
+    background-color: #fff;
+    /* background-color: #00ff0080; */
+    border-radius: 50%;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+.gradientShadow{
+    height: 226px;
+    width: 226px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    /* background-color: red; */
+    /* background-image: conic-gradient(from 135deg, #00000000 270deg, blue 0deg, green 330deg); */
+    transform: rotate(-270deg);
+}
+ 
+
+
+
+
+
+
+
+
+
+
+.meterDisc{
+    width: 114px;
+    height: 114px;
+    border-radius: 50%;
+    border: 2px solid #a5a0ad;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+ 
+}
+
+.meterDiscValue{ 
+    font-size: 3em;
+    line-height: 1em;   
+}
+
+.meterDisc > div{
+    z-index: 1;
+}
+
+
+
+
+
+
+
+/* MARK LIST */
+.markList{
+    width: 3px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+#speedometer .markList,
+#tachometer .markList{
+    width: 100%;
+}
+
+
+.mark{
+    width: 100%;
+    height: 3px;
+    flex-shrink: 0;
+    /* background-color: rebeccapurple; */
+
+    transform: rotate(0deg);
+
+    z-index: 1;
+    position: absolute;
+    
+}
+
+.mark > div{
+    width: 56px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.markBig div:not(:nth-child(2)),
+.markMedium div,
+.markSmall{
+    background-color: #eee;
+}
+
+
+.markBig div:not(:nth-child(2)){
+    width: 12px;
+    height: 3px;
+    /* background-color: red; */
+}
+
+.markBig div:nth-child(2){
+    width: 30px;
+    height: 24px;
+    /* background-color: greenyellow; */
+    
+    transform: rotate(-90deg);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    left: 13px;
+    top: -10.5px;
+}
+
+
+ 
+
+
+.markMedium div{
+    width: 8px;
+    height: 3px;
+    /* background-color: lime; */
+}
+
+
+
+.markSmall{
+    width: 4px !important;
+    height: 1px;
+    /* background-color: blue; */
+    margin-top: 1px;
+}
+ 
+
+
+/* .markActive .markBig div:not(:nth-child(2)),
+.markActive:not(.markBig) div{
+    background-color: cyan;
+} */
+
+.markActive .markBig div:not(:nth-child(2)),
+.markActive > div:not(.markBig) div,
+.markActive > .markSmall{
+    background-color: #57b7fc !important;
+}
+
+
+
+
+
+
+
+
+
+/* RPM */
+#tachometer::after{
+    content: '';
+    width: 117px;
+    height: 300px;
+    background-color: #000;
+    transform: rotate(45deg);
+    transform-origin: 31px 12px;
+    position: absolute;
+    left: 176px;
+    top: 50px;
+}
+
+#tachometer::before{
+    content: '';
+    width: 100px;
+    height: 75px;
+    z-index: 1;
+    background-color: #000;
+    position: absolute;
+    left: 113px;
+    top: 0px;
+}
+
+
+
+
+
+
+
+
+
+#tachometer_linear{
+    /* width: 384px; */
+    /* width: 494px; */
+    width: 500px;
+    height: 60px;
+    /* background-color: #000; */
+
+    padding-right: 115px;
+
+    border-top: 3px solid #a5a0ad;
+    border-bottom: 2px solid #a5a0ad;
+
+
+    
+
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 2;
+    position: absolute;
+    /* left: calc(50% + 4px); */
+    /* left: 50%; */
+
+    top: -2px;
+
+
+    /* transform: translateX(-1.4px); */
+    transform: translateX(250px);
+}
+
+
+
+
+#tachometer_linear .mark{
+    width: 0;
+    transform: rotate(90deg);
+    transform-origin: 1px 1px;
+    position: static;
+}
+
+
+
+ 
+#tachometer_linear_shadow{
+    overflow: hidden;
+    width: 385px;  
+    height: 56px; 
+    
+
+    width: 0;
+    
+    transform: translateX(113px);
+    background-image: linear-gradient(to right, #00000000 -200px, #0365c0);
+
+    z-index: 1;
+
+    position: absolute;
+
+
+    top: 0;
+    left: 0;
+
+
+}
+
+#tachometer_linear_shadow div{
+    width: 385px;  
+    height: 56px; 
+    
+    
+
+    transform: translateX(0px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CENTER CONTENT */
+
+
+#miniGaugeList{
+    width: fit-content;
+    /* background-color: green; */
+
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+
+    margin: auto;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    
+    
+}
+
+
+.miniGauge{
+    height: 81px;
+    width: 81px; 
+
+    border-radius: 50%;
+
+    position: relative;
+  
+    background-image: conic-gradient(
+        from 135deg,
+        #000 0deg, #000 90deg,
+        #353535 90deg, #353535 310deg,
+        #ffc107 270deg, #ffc107 320deg,
+        #b71c1c 270deg
+    );
+
+    
+
+}
+
+
+.miniGauge::before,
+.miniGauge::after{
+    content: '';
+    width: 77px;
+    height: 77px;
+    background-color: #0e0e0e;
+    border-radius: 50%;
+
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.miniGauge::after{
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+}
+
+
+
+.miniGaugeSquareToHidden{
+    content: '';
+    width: 42px;
+    height: 42px;
+    background-color: #000;
+    transform-origin: left top;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 41px;
+    top: 39px;
+
+}
+
+
+
+
+
+.miniGaugeShadow{
+    height: 81px;
+    width: 81px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    /* background-color: blue; */
+    /* background-image: conic-gradient(from 135deg, #00000000 270deg, blue 0deg, green 330deg); */
+    transform: rotate(-270deg);
+
+    position: absolute;
+}
+
+
+
+
+.miniGaugeNeedle{
+    width: 100%;
+    height: 3px;
+    /* background-color: yellow; */
+    margin: auto;
+    transform: rotate(-45deg);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+}
+
+.miniGaugeNeedle div{
+    width: 16px;
+    height: 3px;
+    background-color: #fff;
+}
+
+
+
+.miniGaugeUnit{  
+    width: fit-content;
+    z-index: 1;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.miniGaugeIcon{
+    width: 32px;
+    height: 32px;
+    /* background-color: red; */
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+}
+
+
+
+
+.miniGaugeMarkList{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+ 
+
+
+.miniGaugeMarkBig,
+.miniGaugeMarkSmall{
+    width: 100%;
+    /* background-color: #f0f; */
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+.miniGaugeMarkBig{
+    height: 1px; 
+    padding-left: 4px;
+}
+
+
+.miniGaugeMarkSmall{
+    height: 1px;
+    padding-left: 6px; 
+} 
+
+
+.miniGaugeMarkBig div,
+.miniGaugeMarkSmall div{
+    height: 100%;
+    width: 16px;
+    background-color: #a5a0ad;
+}
+
+.miniGaugeMarkBig div{
+    background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+.miniGaugeLabels{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    /* background-color: #0000ff80; */
+    position: relative;
+    /* top: calc(100% - 8px); */
+    bottom: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SPEED */
+#speedometer{
+    z-index: 2;
+    outline: 4px solid #000;
+}
+
+
+#speedometer::before,
+#speedometer::after{
+    content: '';
+    width: 87px;
+    height: 79px;
+    background-color: #000;
+    transform-origin: 100% 0;
+    transform: rotate(-45deg);
+    position: absolute;
+    left: -8px;
+    bottom: 0;
+}
+
+
+#speedometer::before{
+    width: 120px;
+    height: 120px; 
+    transform: rotate(-45deg) translate(-47.3px, -37.2px);
+    z-index: 1;
+    position: absolute; 
+    bottom: 0;
+    left: initial;
+    top: initial; 
+}
+
+
+#speedometer::after{
+    transform: rotate(-45deg);
+    z-index: -1;
+    left: 60px;
+}
+
+
+
+.meterDisc{
+    background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+/* BOTTOM GAUGES */
+
+
+ 
+
+
+
+
+.bottomGaugeContainer{
+
+    width: 154px;
+    /* background-color: red; */
+    /* z-index: 99999; */
+    position: absolute;
+    left: 38px;
+    /* top: 0; */
+    bottom: -21px;
+}
+
+
+#bottomGaugeContainerRight{
+    right: 38px !important;
+    left: initial;
+    z-index: 2;
+}
+
+#bottomGaugeContainerRight .bottomGaugeIcon{
+    right: 144px;
+    left: initial;
+}
+
+
+
+
+
+.bottomGaugeClip{
+    width: 154px;
+    height: 36px;
+    border-radius: 50px;
+    overflow: hidden;
+    /* background-color: yellow; */
+    position: relative;
+}
+
+
+
+
+
+
+
+.bottomGaugeShadow{
+    width: 154px;
+    height: 154px;
+    border-radius: 50%;
+
+    /* background-color: aqua; */
+    /* background-image: conic-gradient(from 225deg, #00000000 270deg, blue 0deg, green 330deg); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute; 
+    bottom: 0;
+}
+
+
+
+
+
+.bottomGaugeShadow::after{
+    content: '';
+    width: 133px;
+    height: 133px;
+    background-color: #000;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute; 
+}
+
+
+
+
+
+
+
+
+.bottomGauge{
+    width: 154px;
+    height: 154px;
+    border-radius: 50%;
+    border: 2px solid #353535;
+    position: absolute; 
+    bottom: 0;
+}
+
+
+
+.bottomGauge::before,
+.bottomGauge::after{
+    content: '';
+    width: 32px;
+    height: 32px;
+    background-color: #000;
+    position: absolute;
+    /* z-index: 1; */
+    bottom: 0;
+}
+
+.bottomGauge::before{
+    transform: rotate(45deg);
+    transform-origin: right top;
+    left: 0;
+}
+
+.bottomGauge::after{
+    transform: rotate(-45deg);
+    transform-origin: left top;
+    right: 0;
+}
+
+
+
+
+
+.bottomGauge{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomGaugeMark{
+    width: 155px;
+    height: 3px;
+    background-color: #fff;
+    transform: rotate(-45deg) translateY(0.7px);
+    z-index: 1;
+    position: absolute;
+}
+
+
+.bottomGaugeMark:nth-child(2){ width: 147px; transform: rotate(-67.5deg) translateY(0.7px); }
+.bottomGaugeMark:nth-child(3){ width: 141px; transform: rotate(-90deg) translateY(0.7px); }
+.bottomGaugeMark:nth-child(4){ width: 147px; transform: rotate(-112.5deg) translateY(0.7px); }
+.bottomGaugeMark:nth-child(5){ transform: rotate(-135deg) translateY(0.7px); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bottomGaugeNeedle{
+    width: 100%;
+    height: 3px;
+    margin: auto;
+    transform: rotate(-45deg);
+    position: absolute;
+    z-index: 2;
+    top: -42px;
+    /* bottom: 0; */
+}
+
+
+.bottomGaugeNeedle div{
+    width: 16px;
+    height: 3px;
+    background-color: #fff;
+}
+
+
+
+.bottomGaugeIcon{
+    width: 16px;
+    height: 16px;
+    /* background-color: #f00; */
+    position: absolute;
+    bottom: 33px;
+    left: 144px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#fuelIcon::after{
+    content: '';
+    position: absolute;
+    right: 100%;
+    border: 5px solid transparent;
+    border-right-color: #fff;
+    margin-right: 2px;
+}
+
+
+
+.bottomGaugeLabels{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 100px;
+    position: relative;
+    bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* BOTTOM CONTENT */
+#bottomContentWrapper{
+    width: 300px;
+    /* background-color: green; */
+    border-top: 2px solid #a5a0ad;
+    padding-left: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+
+}
+
+
+#bottomContentGears,
+.bottomContentText{
+    display: flex;
+}
+
+#bottomContentGears{
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
+.bottomContentGearSelected{
+    transform: scale(1.2);
+    color: #b71c1c;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustang Cluster</title>
+
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+    
+    <div id="main_screen">
+
+
+        <div id="cluster">
+            
+            <!-- RPM -->
+            <div id="tachometer">
+                <div class="markList"></div>
+                <div id="tachometer_linear"></div>
+                <div id="tachometer_linear_shadow"></div>
+                <div class="meterNeedle" id="needleRPM"></div>
+                <div class="gradientShadow"></div>
+
+                <div class="meterDisc">
+                    <div class="meterDiscText">GEAR</div>
+                    <div class="meterDiscValue">4</div>
+                </div>
+            </div>
+
+            
+
+
+            <!-- CENTER CONTENT -->
+            <div id="miniGaugeList"></div>
+
+
+
+
+
+
+
+
+
+            <!-- SPEED -->
+            <div id="speedometer">
+                <div class="markList"></div>
+                <div class="meterNeedle" id="needleSpeed"></div>
+                <div class="gradientShadow"></div>
+
+                <div class="meterDisc">
+                    <div class="meterDiscText">KMH</div>
+                    <div class="meterDiscValue">000</div>
+                </div>
+            </div>
+
+
+
+
+             
+
+            <!-- BOTTOM GAUGE -- LEFT -->
+            <div class="bottomGaugeContainer">
+
+                <div class="bottomGaugeClip">
+                    <div class="bottomGaugeShadow"></div>
+
+                    <div class="bottomGauge">
+                        <!-- <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div> -->
+                    </div>
+
+                    <div class="bottomGaugeNeedle">
+                        <div></div>
+                    </div>
+
+                </div>
+
+                <div class="bottomGaugeIcon">
+                    <img src="coolant_temperature.svg" width="16" height="16">
+                </div>
+                
+                <div class="bottomGaugeLabels">
+                    <div>C</div>
+                    <div>H</div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- BOTTOM GAUGE -- RIGHT -->
+            <div class="bottomGaugeContainer" id="bottomGaugeContainerRight">
+
+                <div class="bottomGaugeClip">
+                    <div class="bottomGaugeShadow"></div>
+
+                    <div class="bottomGauge">
+                        <!-- <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div>
+                        <div class="bottomGaugeMark"> <div></div> </div> -->
+                    </div>
+
+                    <div class="bottomGaugeNeedle">
+                        <div></div>
+                    </div>
+
+                </div>
+
+                <div class="bottomGaugeIcon" id="fuelIcon">
+                    <img src="fuel_pump.svg" width="16" height="16">
+                </div>
+                
+                <div class="bottomGaugeLabels">
+                    <div>E</div>
+                    <div>F</div>
+                </div>
+
+            </div>
+
+
+
+
+            <!-- BOTTOM CONTENT -->
+
+
+            <div id="bottomContentWrapper">
+
+                <div class="bottomContentText">
+                    <div class="bottomContentBig">0.0</div>
+                    <div class="bottomContentSmall">km</div>
+                </div>
+
+                <div id="bottomContentGears">
+                    <div>P</div>
+                    <div>R</div>
+                    <div class="bottomContentGearSelected">N</div>
+                    <div>D</div>
+                    <div>S</div>
+                </div>
+
+                
+                <div class="bottomContentText">
+                    <div class="bottomContentBig">0.0</div>
+                    <div class="bottomContentSmall">km to E</div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+	
+	
+    <script src="script.js"></script>
+
+</body>
+</html>
